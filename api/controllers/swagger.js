@@ -18,7 +18,7 @@ const options = {
     host: 'localhost:3000',
     basePath: '/api'
   },
-  apis: ['./api/controllers/users.js', './api/models/user.js']
+  apis: ['./api/controllers/users.js', './models/user.js']
 }
 
 const swaggerJSDoc = require('swagger-jsdoc')

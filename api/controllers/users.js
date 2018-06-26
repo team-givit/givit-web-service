@@ -1,7 +1,10 @@
-import * as DAO from '../daos/'
 import * as Swagger from './swagger'
+const UserRepository = require('./../../database/userRepo');
+const firestore = require('./../../database/startup');
 
-const dao = DAO.getInstance('memory')
+const db = firestore.db();
+
+const userRepo = new UserRepository(db);
 
 const express = require('express')
 const router = express.Router()
@@ -22,36 +25,10 @@ const router = express.Router()
  *           $ref: '#/definitions/Users'
  */
 router.get('/', (req, res, next) => {
-  const response = dao.retrieveAll()
-  Swagger.validateModel('Users', response)
-  res.send(response)
-})
-
-/**
- * @swagger
- * /users/{id}:
- *   get:
- *     description: Retrieve an specific user
- *     tags:
- *       - users
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: id
- *         description: id of the user to retrieve
- *         in: path
- *         required: true
- *         type: number
- *     responses:
- *       200:
- *         description: user
- *         schema:
- *           $ref: '#/definitions/User'
- */
-router.get('/:id', (req, res, next) => {
-  const response = dao.retrieve(parseInt(req.params.id, 10))
-  Swagger.validateModel('User', response)
-  res.send(response)
+  userRepo.get().then(response => {
+    Swagger.validateModel('Users', response);
+    res.send(response);
+  });
 })
 
 /**
@@ -78,8 +55,7 @@ router.get('/:id', (req, res, next) => {
  */
 router.post('/', (req, res, next) => {
   Swagger.validateModel('User', req.body)
-  const response = dao.create(req.body)
-  Swagger.validateModel('User', response)
+  const response = userRepo.add(req.body);
   res.send(response)
 })
 
