@@ -29,5 +29,9 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "engines" : { 
+	"node" : ">=6.9.3",
+	"npm" : "~2.15.9" 	
   }
 }
