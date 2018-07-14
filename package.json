@@ -4,16 +4,10 @@
   "description": "Backend for giVit",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "dev": "nodemon",
     "start": "node index.js",
     "test": "jest",
     "coverage": "jest --coverage"
-=======
-    "start": "node ./node_modules/babel-cli/bin/babel-node.js app.js",
-    "lint": "standard --fix",
-    "debug": "node --nolazy --inspect-brk=9229 app.js"
->>>>>>> 9202638bdc769da5b86813d9fb4e3a58026fbcb6
   },
   "author": "giVit",
   "dependencies": {
@@ -25,7 +19,6 @@
     "jest": "^22.0.4",
     "nodemon": "^1.14.7"
   },
-<<<<<<< HEAD
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js}",
@@ -33,13 +26,5 @@
       "!**/vendor/**",
       "!**/coverage/**"
     ]
-=======
-  "standard": {
-    "parser": "babel-eslint"
-  },
-  "engines" : { 
-	"node" : ">=6.9.3",
-	"npm" : "~2.15.9" 	
->>>>>>> 9202638bdc769da5b86813d9fb4e3a58026fbcb6
   }
 }
